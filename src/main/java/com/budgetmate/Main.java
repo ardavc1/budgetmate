@@ -15,7 +15,7 @@ public class Main extends Application {
         Parent root = loader.load();
 
         stage.setTitle("BudgetMate");
-        stage.setScene(new Scene(root, 1000, 700));
+        stage.setScene(new Scene(root, 1080, 900));
         stage.show();
     }
 
