@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            prefWidth="600" prefHeight="400">
-    <Label layoutX="200" layoutY="180" text="📊 Bütçe Takibi Sayfası"/>
-</AnchorPane>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.budgetmate.BudgetController">
+
+    <top>
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="10" left="20" right="20"/>
+            </padding>
+            <Label text="Bütçe Takibi" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Label fx:id="totalBalanceLabel" text="₺0,00" style="-fx-font-size: 18px; -fx-text-fill: #2c3e50;"/>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="10" bottom="20" left="30" right="30"/>
+            </padding>
+
+            <!-- Form -->
+            <HBox spacing="10">
+                <ComboBox fx:id="categoryComboBox" promptText="Kategori" prefWidth="150"/>
+                <TextField fx:id="amountField" promptText="Tutar" prefWidth="120"/>
+                <ComboBox fx:id="typeComboBox" promptText="Tür" prefWidth="100">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Gelir"/>
+                            <String fx:value="Gider"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button fx:id="addButton" text="Ekle" onAction="#handleAddTransaction" style="-fx-background-color: #27ae60; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- İçerik -->
+            <HBox spacing="20">
+                <VBox spacing="10" HBox.hgrow="ALWAYS">
+                    <Label text="İşlem Geçmişi" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <TableView fx:id="transactionTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="dateColumn" text="Tarih" prefWidth="100"/>
+                            <TableColumn fx:id="categoryColumn" text="Kategori" prefWidth="120"/>
+                            <TableColumn fx:id="amountColumn" text="Tutar" prefWidth="100"/>
+                            <TableColumn fx:id="typeColumn" text="Tür" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <VBox spacing="10" alignment="CENTER" HBox.hgrow="ALWAYS">
+                    <Label text="Gelir-Gider Dağılımı" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <PieChart fx:id="budgetPieChart" prefHeight="300" prefWidth="300"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
