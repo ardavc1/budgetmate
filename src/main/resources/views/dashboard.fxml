@@ -1,12 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8"
+<BorderPane xmlns="http://javafx.com/javafx/8"
             xmlns:fx="http://javafx.com/fxml/1"
-            prefWidth="600" prefHeight="400">
+            fx:controller="com.budgetmate.DashboardController"
+            prefWidth="900" prefHeight="600">
 
-    <Label layoutX="200" layoutY="180" text="Dashboard yüklendi 🚀"/>
+    <!-- Üst Bar -->
+    <top>
+        <HBox spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
+            <Label text="📊 BudgetMate Dashboard" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+        </HBox>
+    </top>
 
-</AnchorPane>
+    <!-- Sol Menü -->
+    <left>
+        <VBox spacing="15" style="-fx-background-color: #34495e; -fx-padding: 20;">
+            <Button text="Ana Sayfa" prefWidth="120" style="-fx-background-color: #1abc9c; -fx-text-fill: white;"/>
+            <Button text="Bütçe Takibi" prefWidth="120" style="-fx-background-color: #3498db; -fx-text-fill: white;"/>
+            <Button text="Ajanda" prefWidth="120" style="-fx-background-color: #9b59b6; -fx-text-fill: white;"/>
+        </VBox>
+    </left>
+
+    <!-- Orta Alan: İçerik -->
+    <center>
+        <VBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="Hoş geldin 👋" style="-fx-font-size: 24px;"/>
+            <Label text="Soldan bir sayfa seçerek başlayabilirsin." style="-fx-font-size: 16px; -fx-text-fill: gray;"/>
+        </VBox>
+    </center>
+
+</BorderPane>
