@@ -20,7 +20,10 @@
     <!-- Sol Menü -->
     <left>
         <VBox spacing="15" style="-fx-background-color: #34495e; -fx-padding: 20;">
-            <Button text="Ana Sayfa" prefWidth="120" style="-fx-background-color: #1abc9c; -fx-text-fill: white;"/>
+            <Button fx:id="btnHome" text="Ana Sayfa" prefWidth="120"
+                    style="-fx-background-color: #1abc9c; -fx-text-fill: white;"
+                    onAction="#handleHome"/>
+
             <Button fx:id="btnBudget" text="Bütçe Takibi" prefWidth="120"
                     style="-fx-background-color: #3498db; -fx-text-fill: white;"
                     onAction="#handleBudget"/>

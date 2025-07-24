@@ -19,6 +19,9 @@ public class DashboardController {
     private Button btnCalendar;
 
     @FXML
+    private Button btnHome;
+
+    @FXML
     public void handleBudget() {
         loadCenterContent("/views/budget.fxml");
     }
@@ -36,4 +39,10 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void handleHome() {
+        loadCenterContent("/views/home.fxml");
+    }
+
 }
