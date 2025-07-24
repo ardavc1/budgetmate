@@ -1,10 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            prefWidth="600" prefHeight="400">
-    <Label layoutX="200" layoutY="180" text="📅 Ajanda Sayfası"/>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.budgetmate.CalendarController">
+    <VBox spacing="20" alignment="TOP_CENTER" prefWidth="800" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="📅 Ajanda" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
+
+        <!-- Form -->
+        <GridPane hgap="15" vgap="15" alignment="CENTER">
+            <columnConstraints>
+                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints minWidth="250"/>
+            </columnConstraints>
+
+            <Label text="Tarih:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="taskDatePicker" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+            <Label text="Açıklama:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="taskField" promptText="Görev Açıklaması" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+            <Label text="Kategori:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="categoryComboBox" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+            <Label text="Durum:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="statusComboBox" prefWidth="250" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+            <Button fx:id="addTaskButton" text="➕ Ekle" onAction="#handleAddTask"
+                    GridPane.rowIndex="4" GridPane.columnIndex="1"
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;" />
+        </GridPane>
+
+        <!-- Tablo -->
+        <TableView fx:id="taskTable" editable="true" prefHeight="350" prefWidth="700" style="-fx-border-color: #ddd;">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Tarih" prefWidth="150" />
+                <TableColumn fx:id="descriptionColumn" text="Açıklama" prefWidth="200" />
+                <TableColumn fx:id="categoryColumn" text="Kategori" prefWidth="150" />
+                <TableColumn fx:id="statusColumn" text="Durum" prefWidth="150" />
+            </columns>
+        </TableView>
+
+    </VBox>
 </AnchorPane>
