@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.budgetmate.CalendarController">
-    <VBox spacing="20" alignment="TOP_CENTER" prefWidth="800" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-        <padding>
-            <Insets top="20" right="20" bottom="20" left="20"/>
-        </padding>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.budgetmate.CalendarController"
+            prefWidth="800" prefHeight="600">
 
-        <Label text="📅 Ajanda" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
+    <VBox alignment="TOP_CENTER" spacing="25" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
 
-        <!-- Form -->
-        <GridPane hgap="15" vgap="15" alignment="CENTER">
+        <!-- Başlık -->
+            <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(to right, #283E51, #485563);">
+                <padding>
+                    <Insets top="15" right="15" bottom="15" left="15"/>
+                </padding>
+
+                <Label text="BudgetMate - Ajanda"
+                       style="-fx-font-size: 20px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
+
+        <!-- Form Alanı -->
+        <GridPane hgap="15" vgap="15">
             <columnConstraints>
-                <ColumnConstraints minWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" minWidth="100"/>
                 <ColumnConstraints minWidth="250"/>
             </columnConstraints>
 
@@ -24,26 +32,27 @@
             <DatePicker fx:id="taskDatePicker" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
             <Label text="Açıklama:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="taskField" promptText="Görev Açıklaması" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+            <TextField fx:id="taskField" promptText="Görev açıklaması" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
             <Label text="Kategori:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="categoryComboBox" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+            <ComboBox fx:id="categoryComboBox" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
             <Label text="Durum:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="statusComboBox" prefWidth="250" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+            <ComboBox fx:id="statusComboBox" prefWidth="250" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-            <Button fx:id="addTaskButton" text="➕ Ekle" onAction="#handleAddTask"
-                    GridPane.rowIndex="4" GridPane.columnIndex="1"
-                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;" />
+            <Button fx:id="addTaskButton" text="➕ Görev Ekle"
+                    onAction="#handleAddTask"
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold;"
+                    GridPane.rowIndex="4" GridPane.columnIndex="1" />
         </GridPane>
 
         <!-- Tablo -->
-        <TableView fx:id="taskTable" editable="true" prefHeight="350" prefWidth="700" style="-fx-border-color: #ddd;">
+        <TableView fx:id="taskTable" editable="true" prefHeight="350" prefWidth="760">
             <columns>
-                <TableColumn fx:id="dateColumn" text="Tarih" prefWidth="150" />
-                <TableColumn fx:id="descriptionColumn" text="Açıklama" prefWidth="200" />
-                <TableColumn fx:id="categoryColumn" text="Kategori" prefWidth="150" />
-                <TableColumn fx:id="statusColumn" text="Durum" prefWidth="150" />
+                <TableColumn fx:id="dateColumn" text="Tarih" prefWidth="140"/>
+                <TableColumn fx:id="descriptionColumn" text="Açıklama" prefWidth="260"/>
+                <TableColumn fx:id="categoryColumn" text="Kategori" prefWidth="180"/>
+                <TableColumn fx:id="statusColumn" text="Durum" prefWidth="140"/>
             </columns>
         </TableView>
 
