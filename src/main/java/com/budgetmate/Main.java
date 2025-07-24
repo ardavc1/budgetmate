@@ -10,13 +10,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // FXML dosyasını src/main/resources/views/dashboard.fxml içinden yükle
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/dashboard.fxml"));
         Parent root = loader.load();
 
-        Scene scene = new Scene(root);
         stage.setTitle("BudgetMate");
-        stage.setScene(scene);
+        stage.setScene(new Scene(root, 1000, 700));
         stage.show();
     }
 

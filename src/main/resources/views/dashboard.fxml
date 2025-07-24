@@ -1,48 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
 <?import javafx.geometry.Insets?>
-
-<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.budgetmate.DashboardController"
-            prefWidth="900" prefHeight="600">
-
-
-    <!-- Üst Bar -->
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.budgetmate.DashboardController">
+    <!-- Üst Menü -->
     <top>
-        <HBox spacing="10" style="-fx-background-color: #2c3e50; -fx-padding: 15;">
-            <Label text="📊 BudgetMate Dashboard" style="-fx-text-fill: white; -fx-font-size: 18px;" />
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #2C3E50;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="📊 BudgetMate" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" />
         </HBox>
     </top>
 
-    <!-- Sol Menü -->
-    <left>
-        <VBox spacing="15" style="-fx-background-color: #34495e; -fx-padding: 20;">
-            <Button fx:id="btnHome" text="Ana Sayfa" prefWidth="120"
-                    style="-fx-background-color: #1abc9c; -fx-text-fill: white;"
-                    onAction="#handleHome"/>
-
-            <Button fx:id="btnBudget" text="Bütçe Takibi" prefWidth="120"
-                    style="-fx-background-color: #3498db; -fx-text-fill: white;"
-                    onAction="#handleBudget"/>
-            <Button fx:id="btnCalendar" text="Ajanda" prefWidth="120"
-                    style="-fx-background-color: #9b59b6; -fx-text-fill: white;"
-                    onAction="#handleCalendar"/>
-
-        </VBox>
-    </left>
-
-    <!-- Orta Alan: İçerik -->
+    <!-- Sekmeli Ana İçerik -->
     <center>
-        <VBox spacing="20" alignment="CENTER">
-            <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
-            </padding>
-            <Label text="Hoş geldin 👋" style="-fx-font-size: 24px;"/>
-            <Label text="Soldan bir sayfa seçerek başlayabilirsin." style="-fx-font-size: 16px; -fx-text-fill: gray;"/>
-        </VBox>
+        <TabPane tabClosingPolicy="UNAVAILABLE" tabMinWidth="120" tabMaxWidth="200" style="-fx-font-size: 14px;">
+            <tabs>
+                <Tab text="🧾 Bütçe Takibi">
+                    <BorderPane fx:id="budgetTabContent" />
+                </Tab>
+                <Tab text="🗓️ Ajanda">
+                    <BorderPane fx:id="agendaTabContent" />
+                </Tab>
+            </tabs>
+        </TabPane>
     </center>
 
+    <!-- Alt Bilgi -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #ecf0f1;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="© 2025 BudgetMate - Developed by ardavc1" style="-fx-text-fill: #7f8c8d; -fx-font-size: 12px;" />
+        </HBox>
+    </bottom>
 </BorderPane>
